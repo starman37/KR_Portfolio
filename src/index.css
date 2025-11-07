@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+/* Theme variables mapping (used by components) */
+@theme {
+  /* Sci-fi color palette */
+  --color-primary: #8b5cf6; /* Violet-500 */
+  --color-secondary: #06b6d4; /* Cyan-500 */
+  --color-logo: var(--logo);
+  --color-text: var(--text);
+  --color-text-dim: var(--text-dim);
+  --color-bg-card: var(--bg-card);
+  --color-bg-card-hover: var(--bg-card-hover);
+  --color-border: var(--border);
+}
+
+/* -------------------------
+   LIGHT THEME (default)
+   ------------------------- */
+:root {
+  /* Light mode variables */
+  --logo: #8b5cf6; /* Violet accent for logos/buttons */
+  --text: #0f172a; /* slate-900 - primary body text (dark) */
+  --text-dim: #475569; /* slate-600 - muted text */
+  --bg-card: rgba(255, 255, 255, 0.72); /* light glass card */
+  --bg-card-hover: rgba(255, 255, 255, 0.88);
+  --border: rgba(2, 6, 23, 0.06); /* subtle border on light */
+  --app-bg: transparent;
+  --nav-bg: rgba(255, 255, 255, 0.12);
+
+  /* star colors for light mode: use dark stars so they're visible on pale backgrounds */
+  --star: rgba(15, 23, 42, 0.92); /* deep slate */
+  --star-dim: rgba(15, 23, 42, 0.35); /* dimmer/diffuse variant */
+}
+
+/* -------------------------
+   DARK THEME (toggle with .dark)
+   ------------------------- */
+.dark {
+  /* Dark Mode Overrides (keeps the existing dark palette) */
+  --logo: #ffffff; /* White logo on dark */
+  --text: #e5e7eb; /* gray-200 */
+  --text-dim: #9ca3af; /* gray-400 */
+  --bg-card: rgba(17, 24, 39, 0.2); /* Glassmorphism */
+  --bg-card-hover: rgba(17, 24, 39, 0.4);
+  --border: rgba(255, 255, 255, 0.1);
+  --app-bg: transparent;
+  --nav-bg: rgba(17, 24, 39, 0.22);
+
+  /* star colors for dark mode: bright/glowing stars */
+  --star: rgba(255, 255, 255, 0.95);
+  --star-dim: rgba(255, 255, 255, 0.45);
+}
+
+/* Base body styles (use variables for text colors) */
+body {
+  background-color: var(--app-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+}
+
+/* Keep a single animated class on the body. Toggling .dark will swap visuals. */
+.animated-gradient {
+  /* Light-mode animated gradient (default) */
+  background: linear-gradient(
+    120deg,
+    #fffbeb 0%,
+    /* warm cream */ #feecdc 20%,
+    /* soft peach */ #e6f7ff 45%,
+    /* pale cyan */ #f3e8ff 70%,
+    /* lavender */ #fff7f3 100% /* rose-tinted highlight */
+  );
+  background-size: 600% 600%;
+  animation: gradientPanLight 25s ease infinite;
+  /* let content be readable on top */
+  color: var(--color-text);
+}
+
+/* Dark theme overrides for the same class (toggle .dark on root element) */
+.dark .animated-gradient {
+  background: linear-gradient(-45deg, #0b020c, #1f0b2e, #13183a, #030617);
+  background-size: 400% 400%;
+  animation: gradientPan 30s ease infinite;
+  color: var(--color-text);
+}
+
+/* Keyframes for light gradient */
+@keyframes gradientPanLight {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Keyframes for dark gradient (keeps original motion) */
+@keyframes gradientPan {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Helpful utility defaults for cards/borders to follow the theme variables */
+.card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+}
+
+/* Muted text */
+.muted {
+  color: var(--color-text-dim);
+}
+
+/* Example focus/outline using primary color */
+:focus {
+  outline: 3px solid color-mix(in srgb, var(--color-primary) 40%, transparent);
+  outline-offset: 2px;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: var(--star);
+  box-shadow: 0 0 6px color-mix(in srgb, var(--star) 50%, transparent);
+  will-change: transform, opacity, filter;
+}
+
+/* slightly larger/diffuse variant */
+.star.big {
+  width: 3px;
+  height: 3px;
+  box-shadow: 0 0 8px color-mix(in srgb, var(--star) 60%, transparent);
+}
