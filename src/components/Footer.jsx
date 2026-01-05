@@ -10,7 +10,7 @@ export default function Footer() {
       <p className="text-text-dim">
         {/* --- FIX ---
             Changed name to match Navbar */}
-        © 2024 Starman. Built with React & Tailwind CSS
+        © 2024 Starman-Webworks. Built with React & Tailwind CSS
       </p>
     </footer>
   );

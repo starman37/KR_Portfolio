@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { Sun, Moon, Rocket } from "lucide-react";
+import { Sun, Moon, Braces } from "lucide-react";
 
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -37,8 +37,8 @@ export default function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-4 py-4 flex justify-between items-center">
         <a href="#about" className="flex items-center gap-2">
-          <Rocket />
-          <h1 className="text-2xl font-bold transition-colors">Starman</h1>
+          <Braces />
+          <h1 className="text-2xl font-bold transition-colors">Kevin Rush</h1>
         </a>
         <div className="hidden md:flex gap-6 items-center">
           <a href="#about" className="hover:text-primary ">

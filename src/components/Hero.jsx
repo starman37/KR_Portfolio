@@ -34,7 +34,7 @@ export default function Hero() {
             {/* --- THEME ---
               Added a sci-fi gradient text effect */}
             <span className="bg-linear-to-r from-pink-500 to-indigo-500 bg-clip-text text-transparent">
-              Starman
+              Kevin
             </span>
           </motion.h1>
 
